@@ -8,8 +8,9 @@ Apache Kafka has grown in popularity over the past few years and been widely ado
 ## Tools and Technologies Used
 1. Apache Kafka (Streams DSL, Connect)
 2. S3
-3. Flask
-4. PostgreSQL
+3. Python
+4. Flask
+5. PostgreSQL
 
 ## Data Flow
 ![alt text](https://github.com/lunggitsdata/LungKo-2019A-DE-Project/blob/master/Dataflow.png)
