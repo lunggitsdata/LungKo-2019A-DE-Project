@@ -1,0 +1,27 @@
+{
+  "namespace": "com.kosmos.analytics",
+  "type": "record",
+  "name": "Transaction",
+  "fields": [
+    {
+      "name": "symbol",
+      "type": "string"
+    },
+    {
+      "name": "date",
+      "type": "string"
+    },
+    {
+      "name": "time",
+      "type": "string"
+    },
+    {
+      "name": "price",
+      "type": "double"
+    },
+    {
+      "name": "shares",
+      "type": "int"
+    }
+  ]
+}
