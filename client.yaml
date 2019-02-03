@@ -1,6 +1,6 @@
 purchase_type: on_demand
 subnet_id: 
-num_instances: 3
+num_instances: 2
 key_name: 
 security_group_ids: 
 instance_type: m4.large
