@@ -21,6 +21,7 @@ bucket = s3.Bucket('deutsche-boerse-xetra-pds')
 # Loop through objects. Each object.key is a pointer to a csv file
 for object in bucket.objects.all():
     # skip non-trading hours by file size
+    # https://github.com/Deutsche-Boerse/dbg-pds#non-trading-hours-vs-missing-data
     if object.size > 136:
         url = 'https://s3.eu-central-1.amazonaws.com/deutsche-boerse-xetra-pds/' + object.key
         data = pd.read_csv(url)
