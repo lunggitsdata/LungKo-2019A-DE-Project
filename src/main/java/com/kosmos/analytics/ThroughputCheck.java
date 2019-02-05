@@ -51,11 +51,11 @@ public class ThroughputCheck {
                 //.filter((k,v)-> (Double.parseDouble(v[4]) > 0))
                 // Transaction(symbol, date, time, price, shares)
                 .mapValues(v -> new Transaction(v[0], v[1], v[2], Double.parseDouble(v[3]), Integer.parseInt(v[4])))
-                .to("testoutput", Produced.with(Serdes.String(), transactionSerde));
+                .to("stocksoutput", Produced.with(Serdes.String(), transactionSerde));
 
         buyOrSell[1]  // sell
                 .mapValues(v -> new Transaction(v[1], v[6], v[7], Double.parseDouble(v[8]), -1))
-                .to("testoutput", Produced.with(Serdes.String(), transactionSerde));
+                .to("stocksoutput", Produced.with(Serdes.String(), transactionSerde));
 
         final KafkaStreams streams = new KafkaStreams(builder.build(), props);
         final CountDownLatch latch = new CountDownLatch(1);
