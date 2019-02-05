@@ -40,7 +40,7 @@ public class ThroughputCheck {
         transactionSerde.configure(serdeConfig, false);
 
         KStream<String, String[]>[] buyOrSell = lines.mapValues(v -> v.split("\\^"))
-                .branch((k,v)->(Double.parseDouble(v[11]) > Double.parseDouble(v[8])),
+                .branch((k,v)->(Double.parseDouble(v[11]) >= Double.parseDouble(v[8])),
                         (k,v)->(Double.parseDouble(v[11]) < Double.parseDouble(v[8])));
 
         buyOrSell[0]  // buy
@@ -48,7 +48,7 @@ public class ThroughputCheck {
                         String.valueOf((int)(
                                 1000*(Double.parseDouble(v[11])- Double.parseDouble(v[8]))/Double.parseDouble(v[8])))
                 })
-                .filter((k,v)-> (Double.parseDouble(v[4]) > 0))
+                //.filter((k,v)-> (Double.parseDouble(v[4]) > 0))
                 // Transaction(symbol, date, time, price, shares)
                 .mapValues(v -> new Transaction(v[0], v[1], v[2], Double.parseDouble(v[3]), Integer.parseInt(v[4])))
                 .to("testoutput", Produced.with(Serdes.String(), transactionSerde));
