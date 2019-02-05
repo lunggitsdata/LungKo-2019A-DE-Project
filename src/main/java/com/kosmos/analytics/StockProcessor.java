@@ -22,7 +22,8 @@ public class StockProcessor {
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "stock-stream-processor");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
                 "10.0.0.5:9092,10.0.0.6:9092,10.0.0.7:9092");
-        props.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
+        props.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 10 * 1024 * 1024L);
+        props.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 4);
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG,
