@@ -9,7 +9,7 @@ Apache Kafka has grown in popularity over the past few years and has been widely
 1. Apache Kafka (Streams DSL, Connect)
 2. S3
 3. Python
-4. Flask
+4. Dash
 5. PostgreSQL
 
 ## Data Flow
